@@ -1,0 +1,31 @@
+import sys
+from rclone.rclone import Rclone
+
+def respandlar_jlmolero():
+    # Aquí va el código para respaldar el JLMolero
+    
+    rclone = Rclone()
+    #lista = rclone.ls('Informatica:rrhh')
+    #print(lista)
+    rclone.sync('README.md', "Informatica:JLMOLERO")
+
+def respaldar_administracion():
+    # Aquí va el código para respaldar la administración
+    print("Respaldando administración...")
+
+def main(argumento):
+    if argumento == "respaldar_administracion":
+        respaldar_administracion()
+    else:
+        print("Argumento no válido")
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python respaldar_ltz.py <argumento>")
+        exit()
+    elif sys.argv[1] == "jlmolero":
+        respandlar_jlmolero()
+    elif sys.argv[1] == "administracion":
+        respaldar_administracion()
+    else:
+        main(sys.argv[1])
